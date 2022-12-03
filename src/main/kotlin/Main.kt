@@ -1,5 +1,6 @@
 import day01.Day01
 import day02.Day02
+import day03.Day03
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -36,6 +37,7 @@ fun main(args: Array<String>) {
     val dayObject = when (day) {
         DayEnum.DAY01 -> Day01()
         DayEnum.DAY02 -> Day02()
+        DayEnum.DAY03 -> Day03()
         else -> TODO()
     }
 
