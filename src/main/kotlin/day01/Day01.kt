@@ -1,14 +1,16 @@
 package day01
 
+import Day
+
 private fun elvesCalories(input: String) =
     input.split("\n\n")
         .asSequence()
         .map { elf -> elf.split("\n").filter(String::isNotEmpty).sumOf(String::toInt) }
 
-class Day01 {
-    fun part1(input: String) = elvesCalories(input).max()
+class Day01: Day {
+    override fun part1(input: String) = elvesCalories(input).max()
 
-    fun part2(input: String): Int {
+    override fun part2(input: String): Int {
         val (a, b, c) = elvesCalories(input).fold(Triple(0, 0, 0)) { acc, i ->
             val (a, b, c) = acc
             if (i >= c) {

@@ -1,4 +1,5 @@
 import day01.Day01
+import day02.Day02
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -7,17 +8,22 @@ private fun usage(): Nothing {
     exitProcess(1)
 }
 
-enum class Day {
-    Day01, Day02, Day03, Day04, Day05, Day06, Day07, Day08, Day09, Day10,
-    Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20,
-    Day21, Day22, Day23, Day24, Day25,
+enum class DayEnum {
+    DAY01, DAY02, DAY03, DAY04, DAY05, DAY06, DAY07, DAY08, DAY09, DAY10,
+    DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19, DAY20,
+    DAY21, DAY22, DAY23, DAY24, DAY25,
+}
+
+interface Day {
+    fun part1(input: String): Int
+    fun part2(input: String): Int
 }
 
 inline fun <reified T : Enum<*>> enumValueOrNull(name: String): T? =
     T::class.java.enumConstants.firstOrNull { it.name.equals(name, ignoreCase = true) }
 
 fun main(args: Array<String>) {
-    val day = args.getOrNull(0)?.let { enumValueOrNull<Day>(it) } ?: usage()
+    val day = args.getOrNull(0)?.let { enumValueOrNull<DayEnum>(it) } ?: usage()
     val prefix = "src/main/kotlin/${day.toString().lowercase()}"
     val filename = when (args.getOrNull(1)) {
         "--sample" -> "$prefix/sample.txt"
@@ -28,7 +34,8 @@ fun main(args: Array<String>) {
     val input = File(filename).readText()
 
     val dayObject = when (day) {
-        Day.Day01 -> Day01()
+        DayEnum.DAY01 -> Day01()
+        DayEnum.DAY02 -> Day02()
         else -> TODO()
     }
 
