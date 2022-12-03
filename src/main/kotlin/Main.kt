@@ -1,34 +1,39 @@
+import day01.Day01
 import java.io.File
+import kotlin.system.exitProcess
 
-fun main(args: Array<String>) {
-    println("Hello World!")
-
-//    val input = File("sample.txt").readText()
-    val input = File("input.txt").readText()
-    val part1 = part1(input)
-    val part2 = part2(input)
-    println("part1: $part1")
-    println("part2: $part2")
+private fun usage(): Nothing {
+    println("usage: `./gradlew run --args '<day> <--sample>'`\nEx. `./gradlew run --args 'day01 --sample'`")
+    exitProcess(1)
 }
 
-fun elvesCalories(input: String) =
-    input.split("\n\n")
-        .asSequence()
-        .map { elf -> elf.split("\n").filter(String::isNotEmpty).sumOf(String::toInt) }
+enum class Day {
+    Day01, Day02, Day03, Day04, Day05, Day06, Day07, Day08, Day09, Day10,
+    Day11, Day12, Day13, Day14, Day15, Day16, Day17, Day18, Day19, Day20,
+    Day21, Day22, Day23, Day24, Day25,
+}
 
-fun part1(input: String) = elvesCalories(input).max()
-fun part2(input: String): Int {
-    val (a, b, c) = elvesCalories(input).fold(Triple(0, 0, 0)) { acc, i ->
-        val (a, b, c) = acc
-        if (i >= c) {
-            Triple(b, c, i)
-        } else if (i >= b) {
-            Triple(b, i, c)
-        } else if (i >= a) {
-            Triple(i, b, c)
-        } else {
-            acc
-        }
+inline fun <reified T : Enum<*>> enumValueOrNull(name: String): T? =
+    T::class.java.enumConstants.firstOrNull { it.name.equals(name, ignoreCase = true) }
+
+fun main(args: Array<String>) {
+    val day = args.getOrNull(0)?.let { enumValueOrNull<Day>(it) } ?: usage()
+    val prefix = "src/main/kotlin/${day.toString().lowercase()}"
+    val filename = when (args.getOrNull(1)) {
+        "--sample" -> "$prefix/sample.txt"
+        else -> "$prefix/input.txt"
     }
-    return a + b + c
+
+    println("loading file $filename");
+    val input = File(filename).readText()
+
+    val dayObject = when (day) {
+        Day.Day01 -> Day01()
+        else -> TODO()
+    }
+
+    val part1 = dayObject.part1(input)
+    val part2 = dayObject.part2(input)
+    println("part1: $part1")
+    println("part2: $part2")
 }
