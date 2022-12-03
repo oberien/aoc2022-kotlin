@@ -21,14 +21,7 @@ class Day03: Day {
         input.lineSequence()
             .filter { it.isNotEmpty() }
             .chunked(3)
-            .map { (a, b, c) -> a.asSequence().distinct().plus(b.asSequence().distinct()).plus(c.asSequence().distinct()) }
-            .map {
-                val map = HashMap<Char, Int>()
-                for (c in it) {
-                    map[c] = (map[c] ?: 0) + 1
-                }
-                map.asSequence().maxBy { (_, count) -> count }.key
-            }
+            .map { (a, b, c) -> a.asIterable().intersect(b.toSet()).intersect(c.toSet()).single() }
             .map { when {
                 ('a'..'z').contains(it) -> it - 'a' + 1
                 ('A'..'Z').contains(it) -> it - 'A' + 27
