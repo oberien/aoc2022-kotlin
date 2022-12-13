@@ -3,13 +3,15 @@ package day04
 import Day
 
 class Day04: Day {
-    override fun part1(input: String): Int =
+    override fun part1(input: String): String =
         parse(input)
             .count { (a, b) -> a.contains(b) || b.contains(a) }
+            .toString()
 
-    override fun part2(input: String): Int =
+    override fun part2(input: String): String =
         parse(input)
             .count { (a, b) -> a.overlaps(b) }
+            .toString()
 
     private fun parse(input: String): Sequence<Pair<ClosedRange<Int>, ClosedRange<Int>>> =
         input.lineSequence().filter { it.isNotEmpty() }

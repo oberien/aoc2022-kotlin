@@ -2,6 +2,7 @@ import day01.Day01
 import day02.Day02
 import day03.Day03
 import day04.Day04
+import day05.Day05
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -17,8 +18,8 @@ enum class DayEnum {
 }
 
 interface Day {
-    fun part1(input: String): Int
-    fun part2(input: String): Int
+    fun part1(input: String): String
+    fun part2(input: String): String
 }
 
 inline fun <reified T : Enum<*>> enumValueOrNull(name: String): T? =
@@ -40,6 +41,7 @@ fun main(args: Array<String>) {
         DayEnum.DAY02 -> Day02()
         DayEnum.DAY03 -> Day03()
         DayEnum.DAY04 -> Day04()
+        DayEnum.DAY05 -> Day05()
         else -> TODO()
     }
 

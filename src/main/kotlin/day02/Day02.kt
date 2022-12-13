@@ -4,21 +4,23 @@ import Day
 import java.lang.IllegalArgumentException
 
 class Day02: Day {
-    override fun part1(input: String): Int =
+    override fun part1(input: String): String =
         input.lineSequence()
             .filter { it.isNotEmpty() }
             .map { it.split(" ") }
             .map { (opponent, me) -> Pair(RockPaperScissors.fromString(opponent), RockPaperScissors.fromString(me)) }
             .map { (opponent, me) -> me.score() + playAgainst(me, opponent).score() }
             .sum()
+            .toString()
 
-    override fun part2(input: String): Int =
+    override fun part2(input: String): String =
         input.lineSequence()
             .filter { it.isNotEmpty() }
             .map { it.split(" ") }
             .map { (opponent, result) -> Pair(RockPaperScissors.fromString(opponent), RPSResult.fromString(result)) }
             .map { (opponent, result) -> result.score() + calculateMe(opponent, result).score() }
             .sum()
+            .toString()
 }
 
 private interface Score {

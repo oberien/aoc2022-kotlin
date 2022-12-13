@@ -4,7 +4,7 @@ import Day
 import java.lang.Exception
 
 class Day03: Day {
-    override fun part1(input: String): Int =
+    override fun part1(input: String): String =
         input.lineSequence()
             .filter { it.isNotEmpty() }
             .map { Pair(it.substring(0 until it.length/2), it.substring(it.length/2 until it.length)) }
@@ -16,8 +16,9 @@ class Day03: Day {
                 else -> throw Exception("unreachable")
             } }
             .sum()
+            .toString()
 
-    override fun part2(input: String): Int =
+    override fun part2(input: String): String =
         input.lineSequence()
             .filter { it.isNotEmpty() }
             .chunked(3)
@@ -28,4 +29,5 @@ class Day03: Day {
                 else -> throw Exception("unreachable")
             } }
             .sum()
+            .toString()
 }
