@@ -6,6 +6,7 @@ import day05.Day05
 import day06.Day06
 import day07.Day07
 import day08.Day08
+import day09.Day09
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -33,6 +34,7 @@ fun main(args: Array<String>) {
     val prefix = "src/main/kotlin/${day.toString().lowercase()}"
     val filename = when (args.getOrNull(1)) {
         "--sample" -> "$prefix/sample.txt"
+        "--sample2" -> "$prefix/sample2.txt"
         else -> "$prefix/input.txt"
     }
 
@@ -48,6 +50,7 @@ fun main(args: Array<String>) {
         DayEnum.DAY06 -> Day06()
         DayEnum.DAY07 -> Day07()
         DayEnum.DAY08 -> Day08()
+        DayEnum.DAY09 -> Day09()
         else -> TODO()
     }
 
