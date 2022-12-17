@@ -3,7 +3,7 @@ package day08
 import Day
 import kotlin.math.max
 
-class Day08: Day {
+class Day08 : Day {
     override fun part1(input: String): String {
         val trees = parse(input)
 

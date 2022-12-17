@@ -4,7 +4,7 @@ import Day
 import kotlin.math.max
 import kotlin.math.min
 
-class Day09: Day {
+class Day09 : Day {
     override fun part1(input: String): String =
         State(1).apply { applyMoves(parse(input)) }.numVisitedTailPositions().toString()
 

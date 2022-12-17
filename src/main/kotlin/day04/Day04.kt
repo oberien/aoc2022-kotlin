@@ -2,7 +2,7 @@ package day04
 
 import Day
 
-class Day04: Day {
+class Day04 : Day {
     override fun part1(input: String): String =
         parse(input)
             .count { (a, b) -> a.contains(b) || b.contains(a) }

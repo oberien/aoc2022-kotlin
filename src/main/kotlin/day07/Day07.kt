@@ -3,7 +3,7 @@ package day07
 import Day
 import kotlin.math.abs
 
-class Day07: Day {
+class Day07 : Day {
     override fun part1(input: String): String {
         val root = Node("/", 0, NodeType.FOLDER)
         val commands = parseCommands(input.split("\n"))

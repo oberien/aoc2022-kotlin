@@ -7,7 +7,7 @@ private fun elvesCalories(input: String) =
         .asSequence()
         .map { elf -> elf.split("\n").filter(String::isNotEmpty).sumOf(String::toInt) }
 
-class Day01: Day {
+class Day01 : Day {
     override fun part1(input: String) = elvesCalories(input).max().toString()
 
     override fun part2(input: String): String {

@@ -4,7 +4,7 @@ import Day
 import java.lang.StringBuilder
 import java.util.Stack
 
-class Day05: Day {
+class Day05 : Day {
     override fun part1(input: String): String {
         val split = input.split("\n\n");
         val crates = Crates(split[0])

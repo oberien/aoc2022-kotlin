@@ -3,7 +3,7 @@ package day03
 import Day
 import java.lang.Exception
 
-class Day03: Day {
+class Day03 : Day {
     override fun part1(input: String): String =
         input.lineSequence()
             .filter { it.isNotEmpty() }

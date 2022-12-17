@@ -3,7 +3,7 @@ package day02
 import Day
 import java.lang.IllegalArgumentException
 
-class Day02: Day {
+class Day02 : Day {
     override fun part1(input: String): String =
         input.lineSequence()
             .filter { it.isNotEmpty() }
