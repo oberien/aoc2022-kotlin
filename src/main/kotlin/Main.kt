@@ -5,6 +5,7 @@ import day04.Day04
 import day05.Day05
 import day06.Day06
 import day07.Day07
+import day08.Day08
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -46,6 +47,7 @@ fun main(args: Array<String>) {
         DayEnum.DAY05 -> Day05()
         DayEnum.DAY06 -> Day06()
         DayEnum.DAY07 -> Day07()
+        DayEnum.DAY08 -> Day08()
         else -> TODO()
     }
 
