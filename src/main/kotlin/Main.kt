@@ -9,6 +9,7 @@ import day08.Day08
 import day09.Day09
 import day10.Day10
 import day11.Day11
+import day12.Day12
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -55,11 +56,12 @@ fun main(args: Array<String>) {
         DayEnum.DAY09 -> Day09()
         DayEnum.DAY10 -> Day10()
         DayEnum.DAY11 -> Day11()
+        DayEnum.DAY12 -> Day12()
         else -> TODO()
     }
 
     val part1 = dayObject.part1(input)
-    val part2 = dayObject.part2(input)
     println("part1: $part1")
+    val part2 = dayObject.part2(input)
     println("part2: $part2")
 }
