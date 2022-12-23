@@ -12,6 +12,7 @@ import day11.Day11
 import day12.Day12
 import day13.Day13
 import day14.Day14
+import day15.Day15
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -27,7 +28,9 @@ enum class DayEnum {
 }
 
 interface Day {
+    fun part1Sample(input: String, sample: Boolean): String = part1(input)
     fun part1(input: String): String
+    fun part2Sample(input: String, sample: Boolean): String = part2(input)
     fun part2(input: String): String
 }
 
@@ -37,10 +40,10 @@ inline fun <reified T : Enum<*>> enumValueOrNull(name: String): T? =
 fun main(args: Array<String>) {
     val day = args.getOrNull(0)?.let { enumValueOrNull<DayEnum>(it) } ?: usage()
     val prefix = "src/main/kotlin/${day.toString().lowercase()}"
-    val filename = when (args.getOrNull(1)) {
-        "--sample" -> "$prefix/sample.txt"
-        "--sample2" -> "$prefix/sample2.txt"
-        else -> "$prefix/input.txt"
+    val (filename, sample) = when (args.getOrNull(1)) {
+        "--sample" -> Pair("$prefix/sample.txt", true)
+        "--sample2" -> Pair("$prefix/sample2.txt", true)
+        else -> Pair("$prefix/input.txt", false)
     }
 
     println("loading file $filename");
@@ -61,11 +64,12 @@ fun main(args: Array<String>) {
         DayEnum.DAY12 -> Day12()
         DayEnum.DAY13 -> Day13()
         DayEnum.DAY14 -> Day14()
+        DayEnum.DAY15 -> Day15()
         else -> TODO()
     }
 
-    val part1 = dayObject.part1(input)
+    val part1 = dayObject.part1Sample(input, sample)
     println("part1: $part1")
-    val part2 = dayObject.part2(input)
+    val part2 = dayObject.part2Sample(input, sample)
     println("part2: $part2")
 }
